@@ -3,25 +3,20 @@ package Desafio;
 
 import java.util.Comparator;
 
-
 public class Persona {
 
-    
-     private  String Nombre;
-     private String Apellido;
+    private String Nombre;
+    private String Apellido;
 
-   
+    public Persona() {
+    }
 
-public Persona(){
-}
-
-public Persona(String Nombre, String Apellido) {
+    public Persona(String Nombre, String Apellido) {
         this.Nombre = Nombre;
         this.Apellido = Apellido;
     }
 
-
- public String getNombre() {
+    public String getNombre() {
         return Nombre;
     }
 
@@ -36,19 +31,18 @@ public Persona(String Nombre, String Apellido) {
     public void setApellido(String Apellido) {
         this.Apellido = Apellido;
     }
- 
-@Override
+
+    @Override
     public String toString() {
-        return "[ Nombre =" + Nombre + ", Apellido=" + Apellido +  "]";
+        return "[ Nombre =" + Nombre + ", Apellido=" + Apellido + "]";
     }
 
-   Comparator<Persona>ordenarApellido=new Comparator<Persona>() {
-     @Override
-       public int compare(Persona p1, Persona p2){
+    Comparator<Persona> ordenarApellido = new Comparator<Persona>() {
+        @Override
+        public int compare(Persona p1, Persona p2) {
 
+            return p2.getApellido().compareTo(p1.getApellido());
+        }
 
-     return p1.getApellido().compareTo(p2.getApellido());
-   } 
-    
-};
+    };
 }
