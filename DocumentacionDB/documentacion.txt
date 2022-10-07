@@ -1,0 +1,80 @@
+para seleccionar todos los datos que hay en una tabla de base de datos
+
+SELECT * FROM usuarios
+
+---------------------------------------------------------------------------------------------------
+para actualizar o modificar una columna o un dato en especifico de una tabla utilizando filtros como el WHERE
+
+UPDATE usuarios
+SET correo='smith@gmail.com',Telefono='32569875428' --> nombre de las columnas 
+where id_usuario=3
+
+----------------------------------------------------------------------------------------------------
+
+para eliminar un dato de una tabla utilizando flitros como el WHERE y conectores logico como el OR
+
+DELETE FROM parqueo.clientes
+WHERE id_usuario<8 or id_usuario=15;
+
+-----------------------------------------------------------------------------------------------------
+para crear una tabla de de datos, una llave primaria es un dato que no se puede repetir , en este caso
+el dato id_usuario no se puede repetir 
+
+create table parqueo.clientes(
+   id_usuario int not null auto_increment ,
+   usuario varchar(60)not null,
+   password blob(60) not null,
+   primary key (id_usuario)
+);
+-------------------------------------------------------------------------------------------------------
+para inserta datos en nuestra tabla creada 
+
+
+INSERT INTO usuarios(id_usuario,usuario,password)VALUES(1,'cristian12',254897),(2,'fabian12',2568),(3,'daniel45',25689)
+
+-------------------------------------------------------------------------------------------------------
+
+Para crear una nueva columna en nuestra tabla 
+
+ALTER TABLE usuarios
+add telefono int (10) 
+
+-------------------------------------------------------------------------------------------------------
+para eliminar una columna de nuestra tabla 
+
+ALTER TABLE usuarios
+ DROP COLUMN telefono
+-------------------------------------------------------------------------------------------------------
+para cambiar el nombre de una columna 
+
+ALTER TABLE rubros 
+RENAME COLUMN id_rubros TO id
+
+--------------------------------------------------------------------------------------------------------
+
+como crear una llave foranea de otra tabla a otra tabla 
+
+en este ejemplo vamos a crear dos tabla una tabla llamada "usuarios" y otra tabla llamada "productos"
+
+
+1)creamos nuestra tabla usuarios con los siguientes datos 
+
+
+create table usuarios(
+  id_usuarios int (50) not null,
+  nombres varchar (50) not null,
+  Apellidos varchar(50) not null,
+  primary key(id_usuarios)
+
+);
+
+2)creamos otra tabla y en este caso queremos crear un dato id_usuarios que se referencie a la tabla usuarios 
+es decir creamos una llave foranea 
+
+create table productos(
+ dni_producto int, 
+ nombre_producto varchar(50),
+ primary key (dni_producto),
+ id_usuario int,
+ constraint fk_usuario_id foreign key (id_usuario) references usuarios(id_usuarios)
+);
